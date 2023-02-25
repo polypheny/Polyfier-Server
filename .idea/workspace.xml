@@ -5,74 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b24353-915d-4dcf-89f4-70ad1157ffa4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copyright/ApacheLicense.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NOTICE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lombok.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/PolyfierServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/logging/QueueAppender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/util/BooleanPermuter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/util/ConfigurationManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/util/PolyfierJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/util/PolyfierResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/util/Tuple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/css/log.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/JetBrainsMono-Italic-VariableFont_wght.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/JetBrainsMono-VariableFont_wght.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/OFL.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-BoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-ExtraBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-ExtraBoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-ExtraLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-ExtraLightItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-LightItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-MediumItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-SemiBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-SemiBoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-Thin.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/fonts/jetbrains_mono/static/JetBrainsMono-ThinItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/html/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/html/log.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/img/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/img/log-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/img/polyfier-schema.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/img/polyphenydb-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/base.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/log.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/txt/banner.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/test/java/util/PermuterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
