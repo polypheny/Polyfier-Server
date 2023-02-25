@@ -77,7 +77,6 @@ public class QueryLogAdapter {
             log.info("Configuring Backend...");
             // Todo Implement Prepared Statements
             configureAdapter( statement );
-            connection.commit();
             configureSchema( statement );
             configureTables( statement );
             connection.commit();
@@ -117,11 +116,13 @@ public class QueryLogAdapter {
 
                     // Fields
                     .append("\t").append("task_id ").append("bigint ").append("NOT NULL").append(",\n")
-                    .append("\t").append("query_config ").append("file ").append(",\n")
-                    .append("\t").append("data_config ").append("file ").append(",\n")
+
+                    // Config Files
+                    .append("\t").append("query_config ").append("file ").append("NULL").append(",\n")
+                    .append("\t").append("data_config ").append("file ").append("NULL").append(",\n")
 
                     // Schema Type -> One of a number of predefined Schemas for now.
-                    .append("\t").append("schema_type ").append("varchar ").append(",\n")
+                    .append("\t").append("schema_type ").append("varchar ").append("NULL").append(",\n")
 
                     // Constraints
                     .append("\t").append("PRIMARY KEY ( ").append("task_id").append(" )\n")
@@ -139,10 +140,12 @@ public class QueryLogAdapter {
 
                     // Fields
                     .append("\t").append("config_id ").append("bigint ").append("NOT NULL").append(",\n")
+
                     // Config Files
                     .append("\t").append("store_config ").append("file ").append("NOT NULL").append(",\n")
                     .append("\t").append("partition_config ").append("file ").append("NOT NULL").append(",\n")
                     .append("\t").append("start_config ").append("file ").append("NOT NULL").append(",\n")
+
                     // File Hashes
                     .append("\t").append("store_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("partition_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
@@ -154,6 +157,10 @@ public class QueryLogAdapter {
                     // Store
                     .append(") ").append("ON STORE ").append( ADAPTER_UNIQUE_NAME )
                     .toString();
+
+            log.debug("Create Table Statement: \n\n" + polySqlPolyfierConfigurationTable );
+            statement.execute( polySqlPolyfierConfigurationTable );
+
 
             // Create clients Table
             String polySqlPolyfierClientsTable = new StringBuilder()
@@ -179,7 +186,7 @@ public class QueryLogAdapter {
 
             // Create execution_tasks Table
             String polySqlPolyfierExecTasksTable = new StringBuilder()
-                    .append("CREATE TABLE ").append( SCHEMA_NAME ).append(".execution_tasks " ).append("(\n")
+                    .append("CREATE TABLE ").append( SCHEMA_NAME ).append(".executions " ).append("(\n")
 
                     // Fields
                     .append("\t").append("exec_id ").append("bigint ").append("NOT NULL").append(",\n")
@@ -206,7 +213,7 @@ public class QueryLogAdapter {
 
             // Create polyfier_results Table
             String polySqlPolyfierResultsTable = new StringBuilder()
-                    .append("CREATE TABLE ").append( SCHEMA_NAME ).append(".polyfier_results " ).append("(\n")
+                    .append("CREATE TABLE ").append( SCHEMA_NAME ).append(".results " ).append("(\n")
 
                     // Fields
                     .append("\t").append("index ").append("bigint ").append("NOT NULL").append(",\n")
@@ -221,18 +228,18 @@ public class QueryLogAdapter {
                     // Error in Case of Failure
                     .append("\t").append("error ").append("file ").append("NULL ").append("DEFAULT NULL").append(",\n")
                     // ResultSet
-                    .append("\t").append("result_set ").append("file ").append("NULL").append(",\n")
+                    .append("\t").append("result_set ").append("file ").append("NULL ").append("DEFAULT NULL").append(",\n")
                     // ResultSetHash
-                    .append("\t").append("result_set_hash ").append("bigint ").append("NULL").append(",\n")
+                    .append("\t").append("result_set_hash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
                     // Plans
-                    .append("\t").append("logical ").append("file ").append("NULL").append(",\n")
-                    .append("\t").append("physical ").append("file ").append("NULL").append(",\n")
+                    .append("\t").append("logical ").append("file ").append("NULL ").append("DEFAULT NULL").append(",\n")
+                    .append("\t").append("physical ").append("file ").append("NULL ").append("DEFAULT NULL").append(",\n")
                     // Plan Hashes
-                    .append("\t").append("logical_hash ").append("bigint ").append("NULL").append(",\n")
-                    .append("\t").append("physical_hash ").append("bigint ").append("NULL").append(",\n")
+                    .append("\t").append("logical_hash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
+                    .append("\t").append("physical_hash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
                     // Execution Time
-                    .append("\t").append("actual ").append("bigint ").append("NULL").append(",\n")
-                    .append("\t").append("predicted ").append("bigint ").append("NULL").append(",\n")
+                    .append("\t").append("actual_ms ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
+                    .append("\t").append("predicted_ms ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
 
                     // Constraints
                     .append("\t").append("PRIMARY KEY ( ").append("index").append(" )\n")
@@ -256,8 +263,11 @@ public class QueryLogAdapter {
                 DROP TABLE IF EXISTS %s.%s
         """;
         try {
-            statement.execute( polySql.formatted( SCHEMA_NAME, "polyfier_results" ) );
-            statement.execute( polySql.formatted( SCHEMA_NAME, "polyfier_tasks" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "results" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "executions" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "tasks" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "configurations" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "clients" ) );
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
