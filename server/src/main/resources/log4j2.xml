@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <Filters>
+                <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <File name="ServerLog" fileName="server.log" immediateFlush="false" append="false">
+            <Filters>
+                <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="debug" additivity="false">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="ServerLog"/>
+        </Root>
+        <Logger name="org.eclipse.jetty" level="warn" additivity="false">
+        </Logger>
+        <Logger name="io.javalin.Javalin" level="warn" additivity="false">
+        </Logger>
+        <Logger name="org.polypheny.jdbc.Driver" level="info" additivity="false">
+        </Logger>
+    </Loggers>
+</Configuration>

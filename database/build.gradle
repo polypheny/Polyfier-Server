@@ -1,0 +1,17 @@
+group "org.polypheny"
+
+configurations.all {
+    // check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 0, "seconds"
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    implementation 'org.polypheny:polypheny-jdbc-driver:' + polypheny_jdbc_driver_version
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,49 @@
+.log-container{
+    position: relative;
+    display: block;
+    top: 200px;
+    left: 50px;
+    height: 500px;
+    width: 1000px;
+    background: gray;
+}
+.log-container-bar{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    background: white;
+}
+.log-container-window{
+    position: relative;
+    height: 420px;
+    width: 980px;
+    top: 10px;
+    left: 10px;
+    background: white;
+}
+.config-container{
+    position: absolute;
+    display: flex;
+    top: 20px;
+    left: 50px;
+    height: 160px;
+    width: 1000px;
+}
+.config-column{
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 50%;
+    background: white;
+}
+.config{
+    display: flex;
+    position: relative;
+    height: 26px;
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+}
