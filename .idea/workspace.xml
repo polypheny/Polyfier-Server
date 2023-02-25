@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b24353-915d-4dcf-89f4-70ad1157ffa4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/database/src/main/resources/schema.polysql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

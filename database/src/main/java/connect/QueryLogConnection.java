@@ -17,6 +17,7 @@
 package connect;
 
 import connect.QueryLogAdapter;
+import org.polypheny.jdbc.PolyphenyJdbcConnection;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -54,3 +55,7 @@ public class QueryLogConnection {
     }
 
 }
+
+//
+
+// ALTER ADAPTERS DROP "asas"
