@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="18b24353-915d-4dcf-89f4-70ad1157ffa4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/database/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,20 +124,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="install" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Polyfier-Server.main" />
-      <option name="PROGRAM_PARAMETERS" value="--install $USER_HOME$/test_polyfier" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="purge" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Polyfier-Server.main" />
@@ -230,24 +219,45 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="polyfier-server [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Polyfier-Server" />
       <item itemvalue="Application.Polyfier-Server (reset)" />
       <item itemvalue="Application.purge" />
       <item itemvalue="Application.run" />
       <item itemvalue="Application.PolyfierServer" />
-      <item itemvalue="Application.install" />
+      <item itemvalue="Gradle.polyfier-server [test]" />
       <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations (1)" />
       <item itemvalue="Gradle.polyfier-server [idea]" />
       <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.polyfier-server [test]" />
         <item itemvalue="Gradle.polyfier-server [idea]" />
         <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations (1)" />
         <item itemvalue="Application.PolyfierServer" />
         <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations" />
-        <item itemvalue="Application.install" />
       </list>
     </recent_temporary>
   </component>
@@ -273,6 +283,8 @@
       <workItem from="1675084212114" duration="4784000" />
       <workItem from="1675089383752" duration="4259000" />
       <workItem from="1677322368734" duration="436000" />
+      <workItem from="1677580245339" duration="24556000" />
+      <workItem from="1677624760675" duration="633000" />
     </task>
     <servers />
   </component>
@@ -299,6 +311,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
