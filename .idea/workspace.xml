@@ -5,11 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b24353-915d-4dcf-89f4-70ad1157ffa4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/PolyphenyDbProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/DataConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/ErrorConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/LogicalPlanConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/PartitionConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/PhysicalPlanConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/QueryConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/SchemaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/SeedsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/StartConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/StoreConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/APIKeys.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/BooleanPermuter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/Permuter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/PolyphenyDbProfileGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyControlRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/responses/PolyphenyControlResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/database/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogConnection.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/util/BooleanPermuter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/util/ConfigurationManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/util/PolyfierResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/util/PermuterTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +70,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Record" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -72,6 +101,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/mandelbrot/repos/polyfier-server/server&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -101,6 +131,9 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="server.requests" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Polyfier-Server">
     <configuration name="Polyfier-Server (reset)" type="Application" factoryName="Application">
@@ -111,13 +144,6 @@
       </method>
     </configuration>
     <configuration name="Polyfier-Server" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="PolyfierServer" />
-      <module name="Polyfier-Server.server.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PolyfierServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="PolyfierServer" />
       <module name="Polyfier-Server.server.main" />
       <method v="2">
@@ -152,7 +178,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PermuterTest.permuterReturnsCorrectPermutations (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="PermuterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -165,7 +191,7 @@
           <list>
             <option value=":server:test" />
             <option value="--tests" />
-            <option value="&quot;management.PermuterTest.permuterReturnsCorrectPermutations&quot;" />
+            <option value="&quot;util.PermuterTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -175,7 +201,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PermuterTest.permuterReturnsCorrectPermutations" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="PermuterTest.permuterReturnsCorrectPermutations (2)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -186,14 +212,35 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
+            <option value=":server:test" />
             <option value="--tests" />
-            <option value="&quot;management.PermuterTest.permuterReturnsCorrectPermutations&quot;" />
+            <option value="&quot;util.PermuterTest.permuterReturnsCorrectPermutations&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="polyfier-server [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -245,19 +292,19 @@
       <item itemvalue="Application.Polyfier-Server (reset)" />
       <item itemvalue="Application.purge" />
       <item itemvalue="Application.run" />
-      <item itemvalue="Application.PolyfierServer" />
+      <item itemvalue="Gradle.PermuterTest" />
+      <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations (2)" />
+      <item itemvalue="Gradle.polyfier-server [dependencies]" />
       <item itemvalue="Gradle.polyfier-server [test]" />
-      <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations (1)" />
       <item itemvalue="Gradle.polyfier-server [idea]" />
-      <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.polyfier-server [dependencies]" />
+        <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations (2)" />
+        <item itemvalue="Gradle.PermuterTest" />
         <item itemvalue="Gradle.polyfier-server [test]" />
         <item itemvalue="Gradle.polyfier-server [idea]" />
-        <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations (1)" />
-        <item itemvalue="Application.PolyfierServer" />
-        <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations" />
       </list>
     </recent_temporary>
   </component>
@@ -284,7 +331,16 @@
       <workItem from="1675089383752" duration="4259000" />
       <workItem from="1677322368734" duration="436000" />
       <workItem from="1677580245339" duration="24556000" />
-      <workItem from="1677624760675" duration="633000" />
+      <workItem from="1677624760675" duration="1521000" />
+      <workItem from="1677673285915" duration="15349000" />
+      <workItem from="1677693997825" duration="4962000" />
+      <workItem from="1677775721010" duration="4824000" />
+      <workItem from="1677847173304" duration="3333000" />
+      <workItem from="1677857394750" duration="260000" />
+      <workItem from="1677859142329" duration="5550000" />
+      <workItem from="1677936332130" duration="14801000" />
+      <workItem from="1677990100279" duration="25689000" />
+      <workItem from="1678195694732" duration="4192000" />
     </task>
     <servers />
   </component>
@@ -313,8 +369,8 @@
           <option name="timeStamp" value="1" />
         </breakpoint>
         <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
-          <option name="timeStamp" value="2" />
+          <properties class="org.apache.http.conn.HttpHostConnectException" package="org.apache.http.conn" />
+          <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
