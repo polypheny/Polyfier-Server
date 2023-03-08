@@ -49,7 +49,7 @@ public class PolyphenyControlRequest implements Serializable {
     }
 
     public static class StartConfiguration extends PolyphenyControlRequest {
-        public StartConfiguration(String apiKey ) {
+        public StartConfiguration( String apiKey ) {
             super(apiKey);
         }
     }

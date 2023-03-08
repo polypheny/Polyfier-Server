@@ -18,16 +18,20 @@ package server.generators;
 
 import org.bouncycastle.crypto.generators.BCrypt;
 
+import java.util.UUID;
+
 public abstract class APIKeys {
 
-
     public static String generate() {
-
-
-        return null;
+        // Stub
+        return UUID.randomUUID().toString();
     }
 
 
+    public static boolean validate( String apiKey ) {
+        // Stub
+        return true;
+    }
 
 
 }

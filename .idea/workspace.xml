@@ -5,37 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b24353-915d-4dcf-89f4-70ad1157ffa4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/PolyphenyDbProfile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/DataConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/ErrorConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/LogicalPlanConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/PartitionConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/PhysicalPlanConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/QueryConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/SchemaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/SeedsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/StartConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/config/StoreConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/APIKeys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/BooleanPermuter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/Permuter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/PolyphenyDbProfileGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyControlRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/responses/PolyphenyControlResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/connect/QueryLogConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/util/BooleanPermuter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/util/ConfigurationManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/util/PolyfierResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/util/PermuterTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +311,8 @@
       <workItem from="1677859142329" duration="5550000" />
       <workItem from="1677936332130" duration="14801000" />
       <workItem from="1677990100279" duration="25689000" />
-      <workItem from="1678195694732" duration="4192000" />
+      <workItem from="1678195694732" duration="5923000" />
+      <workItem from="1678260397356" duration="369000" />
     </task>
     <servers />
   </component>

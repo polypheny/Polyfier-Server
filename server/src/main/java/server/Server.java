@@ -3,11 +3,11 @@ package server;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import connect.QueryLogConnection;
 import io.javalin.Javalin;
 import io.javalin.http.HttpStatus;
 import logging.QueueAppender;
-import lombok.val;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,10 +15,8 @@ import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.Filter;
 import org.apache.logging.log4j.core.filter.ThresholdFilter;
 import server.config.SeedsConfig;
-import server.generators.BooleanPermuter;
 import server.generators.PolyphenyDbProfileGenerator;
 import server.requests.PolyphenyControlRequest;
-import server.requests.PolyphenyDbRequest;
 import server.responses.PolyphenyControlResponse;
 
 import java.io.*;
@@ -103,7 +101,6 @@ public class Server implements Runnable {
             getFile(outputStream, "web/img/polyfier-schema.png");
         });
 
-
         // ---- Fonts -----
         app.get("/web/fonts/jetbrains_mono/JetBrainsMono-Italic-VariableFont_wght.ttf", ctx -> {
             OutputStream outputStream = ctx.status(HttpStatus.OK).contentType("font/ttf").outputStream();
@@ -133,7 +130,15 @@ public class Server implements Runnable {
         // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
         app.post("/request/polypheny-control/sign-in", ctx -> {
-            PolyphenyControlRequest.SignIn request = ctx.bodyValidator( PolyphenyControlRequest.SignIn.class ).get();
+            PolyphenyControlRequest.SignIn request;
+            try {
+                request = new GsonBuilder().create().fromJson( ctx.body(), PolyphenyControlRequest.SignIn.class );
+                // Validate
+
+            } catch ( JsonSyntaxException jsonSyntaxException ) {
+                ctx.status( HttpStatus.BAD_REQUEST ).result("Invalid body content for sign-in request: " + ctx.body() );
+                return;
+            }
 
             queryLogConnection.logInPolyphenyControlClient(
                     queryLogConnection.getStatement(),
@@ -145,13 +150,28 @@ public class Server implements Runnable {
         });
 
         app.post( "/request/polypheny-control/sign-out", ctx -> {
-            PolyphenyControlRequest.SignOut request = ctx.bodyValidator( PolyphenyControlRequest.SignOut.class ).get();
+            PolyphenyControlRequest.SignOut request;
+            try {
+                request = new GsonBuilder().create().fromJson( ctx.body(), PolyphenyControlRequest.SignOut.class );
+                // Validate
 
+            } catch ( JsonSyntaxException jsonSyntaxException ) {
+                ctx.status( HttpStatus.BAD_REQUEST ).result("Invalid body content for sign-out request: " + ctx.body() );
+                return;
+            }
 
         });
 
         app.post( "/request/polypheny-control/keep-alive", ctx -> {
-            PolyphenyControlRequest.KeepAlive request = ctx.bodyValidator( PolyphenyControlRequest.KeepAlive.class ).get();
+            PolyphenyControlRequest.KeepAlive request;
+            try {
+                request = new GsonBuilder().create().fromJson( ctx.body(), PolyphenyControlRequest.KeepAlive.class );
+                // Validate
+
+            } catch ( JsonSyntaxException jsonSyntaxException ) {
+                ctx.status( HttpStatus.BAD_REQUEST ).result("Invalid body content for keep-alive request: " + ctx.body() );
+                return;
+            }
 
             queryLogConnection.refreshControlClientStatus(
                     queryLogConnection.getStatement(),
@@ -162,7 +182,15 @@ public class Server implements Runnable {
         });
 
         app.post("/request/polypheny-control/get-task", ctx -> {
-            PolyphenyControlRequest.StartConfiguration request = ctx.bodyValidator( PolyphenyControlRequest.StartConfiguration.class ).get();
+            PolyphenyControlRequest.StartConfiguration request;
+            try {
+                 request = new GsonBuilder().create().fromJson( ctx.body(), PolyphenyControlRequest.StartConfiguration.class );
+                // Validate
+
+            } catch ( JsonSyntaxException jsonSyntaxException ) {
+                ctx.status( HttpStatus.BAD_REQUEST ).result("Invalid body content for a task request: " + ctx.body() );
+                return;
+            }
 
             if ( queryLogConnection.controlClientIsRegistered(
                     queryLogConnection.getStatement(),
