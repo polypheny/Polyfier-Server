@@ -130,12 +130,15 @@ public class Server implements Runnable {
         // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
         app.post("/request/polypheny-control/sign-in", ctx -> {
+            logger.debug( ctx.body() );
             PolyphenyControlRequest.SignIn request;
             try {
                 request = new GsonBuilder().create().fromJson( ctx.body(), PolyphenyControlRequest.SignIn.class );
                 // Validate
 
             } catch ( JsonSyntaxException jsonSyntaxException ) {
+                logger.error( jsonSyntaxException );
+
                 ctx.status( HttpStatus.BAD_REQUEST ).result("Invalid body content for sign-in request: " + ctx.body() );
                 return;
             }
@@ -150,12 +153,15 @@ public class Server implements Runnable {
         });
 
         app.post( "/request/polypheny-control/sign-out", ctx -> {
+            logger.debug( ctx.body() );
             PolyphenyControlRequest.SignOut request;
             try {
                 request = new GsonBuilder().create().fromJson( ctx.body(), PolyphenyControlRequest.SignOut.class );
                 // Validate
 
             } catch ( JsonSyntaxException jsonSyntaxException ) {
+                logger.error( jsonSyntaxException );
+
                 ctx.status( HttpStatus.BAD_REQUEST ).result("Invalid body content for sign-out request: " + ctx.body() );
                 return;
             }
@@ -163,12 +169,14 @@ public class Server implements Runnable {
         });
 
         app.post( "/request/polypheny-control/keep-alive", ctx -> {
+            logger.debug( ctx.body() );
             PolyphenyControlRequest.KeepAlive request;
             try {
                 request = new GsonBuilder().create().fromJson( ctx.body(), PolyphenyControlRequest.KeepAlive.class );
                 // Validate
 
             } catch ( JsonSyntaxException jsonSyntaxException ) {
+                logger.error( jsonSyntaxException );
                 ctx.status( HttpStatus.BAD_REQUEST ).result("Invalid body content for keep-alive request: " + ctx.body() );
                 return;
             }
@@ -182,12 +190,15 @@ public class Server implements Runnable {
         });
 
         app.post("/request/polypheny-control/get-task", ctx -> {
+            logger.debug( ctx.body() );
             PolyphenyControlRequest.StartConfiguration request;
             try {
                  request = new GsonBuilder().create().fromJson( ctx.body(), PolyphenyControlRequest.StartConfiguration.class );
                 // Validate
 
             } catch ( JsonSyntaxException jsonSyntaxException ) {
+                logger.error( jsonSyntaxException );
+
                 ctx.status( HttpStatus.BAD_REQUEST ).result("Invalid body content for a task request: " + ctx.body() );
                 return;
             }

@@ -99,13 +99,17 @@ public class QueryLogAdapter {
                     RELATIONAL_ADAPTER,
                     RELATIONAL_ADAPTER_CONFIG
             ) );
+        } catch (SQLException e) {
+            log.warn("Adapter is probably already configured.");
+        }
+        try {
             statement.execute( polySql.formatted(
                     DOCUMENT_ADAPTER_UNIQUE_NAME,
                     DOCUMENT_ADAPTER,
                     DOCUMENT_ADAPTER_CONFIG
             ) );
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            log.warn("Adapter is probably already configured.");
         }
     }
 
@@ -377,7 +381,7 @@ public class QueryLogAdapter {
             String constraint;
 
             constraint = """
-                ALTER TABLE polyfier.%s ADD CONSTRAINT %s FOREIGN KEY ( %s ) REFERENCES polyfier.%s ( %s ) ON UPDATE RESTRICT ON DELETE RESTRICT
+                ALTER TABLE polyfier.%s ADD CONSTRAINT %s FOREIGN KEY ( %s ) REFERENCES polyfier.%s ( %s ) ON UPDATE RESTRICT ON DELETE NONE
             """;
 
             // Results
@@ -415,6 +419,10 @@ public class QueryLogAdapter {
                 DROP TABLE IF EXISTS %s.%s
         """;
         try {
+            statement.execute( polySql.formatted( SCHEMA_NAME, "results" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "orders" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "profiles" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "nodes" ) );
             statement.execute( polySql.formatted( SCHEMA_NAME, "query_config" ) );
             statement.execute( polySql.formatted( SCHEMA_NAME, "data_configs" ) );
             statement.execute( polySql.formatted( SCHEMA_NAME, "errors" ) );
@@ -423,9 +431,6 @@ public class QueryLogAdapter {
             statement.execute( polySql.formatted( SCHEMA_NAME, "store_configs" ) );
             statement.execute( polySql.formatted( SCHEMA_NAME, "part_configs" ) );
             statement.execute( polySql.formatted( SCHEMA_NAME, "start_configs" ) );
-            statement.execute( polySql.formatted( SCHEMA_NAME, "profiles" ) );
-            statement.execute( polySql.formatted( SCHEMA_NAME, "nodes" ) );
-            statement.execute( polySql.formatted( SCHEMA_NAME, "orders" ) );
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

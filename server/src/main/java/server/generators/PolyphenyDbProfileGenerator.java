@@ -136,10 +136,10 @@ public class PolyphenyDbProfileGenerator implements Serializable {
         return this.schemaConfig;
     }
 
-    public PolyphenyDbProfile createProfile( String dbClientId, String apiKey, SeedsConfig seedsConfig) {
+    public PolyphenyDbProfile createProfile( String profileKey, String apiKey, SeedsConfig seedsConfig) {
         counter++;
         return PolyphenyDbProfile.builder()
-                .dbClientId( dbClientId )
+                .profileKey( profileKey )
                 .apiKey( apiKey )
                 .schemaConfig( createSchemaConfig() )
                 .startConfig( createStartConfig() )

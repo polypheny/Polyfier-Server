@@ -16,6 +16,7 @@
 
 package connect;
 
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -24,12 +25,10 @@ import org.apache.commons.codec.digest.MurmurHash2;
 import org.apache.commons.lang3.tuple.Pair;
 import server.PolyphenyDbProfile;
 import server.ServerConfig;
-import server.config.ErrorConfig;
-import server.config.LogicalPlanConfig;
-import server.config.PhysicalPlanConfig;
-import server.config.SeedsConfig;
+import server.config.*;
 import server.generators.PolyphenyDbProfileGenerator;
 import server.requests.PolyphenyDbRequest;
+import server.responses.PolyphenyDbResponse;
 
 import java.sql.*;
 import java.util.*;
@@ -61,13 +60,20 @@ public class QueryLogConnection {
 
 
         try {
+            String profileKey = UUID.randomUUID().toString();
             PolyphenyDbProfile profile = polyphenyDbProfileGenerator.createProfile(
-                    UUID.randomUUID().toString(),
+                    profileKey,
                     apiKey,
                     seedsConfig
             );
 
-            registerPolyphenyDbProfile( getStatement(), apiKey, profile );
+            profileKey = registerPolyphenyDbProfile( getStatement(), apiKey, profile );
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            PolyphenyDbResponse.GetTask getTask = createTaskFromProfile( getStatement(), profileKey );
+
+            log.debug("Created Task: " + gson.toJson( getTask ) );
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -175,13 +181,13 @@ public class QueryLogConnection {
     }
 
 
-    public void registerPolyphenyDbProfile(
+    public String registerPolyphenyDbProfile(
             Statement statement,
             String apiKey,
             PolyphenyDbProfile polyphenyDbProfile
     ) throws SQLException {
         log.debug("REGISTER PROFILE: \n" + new GsonBuilder().setPrettyPrinting().create().toJson( polyphenyDbProfile ) );
-        registerProfileAndOrder(
+        return registerProfileAndOrder(
                 statement,
                 apiKey,
                 polyphenyDbProfile.getIssuedSeeds().hashAndString(),
@@ -200,7 +206,7 @@ public class QueryLogConnection {
         return MurmurHash2.hash64( sj.toString() );
     }
 
-    private void registerProfileAndOrder(
+    private String registerProfileAndOrder(
             Statement statement,
             String apiKey,
             Pair<Long, String> seedsConfig,
@@ -307,6 +313,7 @@ public class QueryLogConnection {
                 }
         );
 
+        return profileKey.get( 0 );
 
     }
 
@@ -379,6 +386,37 @@ public class QueryLogConnection {
             )
         """;
         return resultExists( statement, String.format( polySqlNodeIsIdle, apiKey ) );
+    }
+
+    public PolyphenyDbResponse.GetTask createTaskFromProfile( final Statement statement, String clientId ) throws SQLException {
+        final String polySqlCompositionTask = """
+            SELECT schema_config, data_config, query_config, store_config, part_config FROM polyfier.profiles, polyfier.schema_configs, polyfier.data_configs, polyfier.query_configs, polyfier.store_configs, polyfier.part_configs WHERE (
+                profiles.profile = '%s' AND
+                profiles.schema_config_hash = schema_configs.schema_config_hash AND
+                profiles.data_config_hash = data_configs.data_config_hash AND
+                profiles.query_config_hash = query_configs.query_config_hash AND
+                profiles.store_config_hash = store_configs.store_config_hash AND
+                profiles.part_config_hash = part_configs.part_config_hash
+            )
+        """;
+
+        ResultSet resultSet = handleResult( statement, String.format( polySqlCompositionTask, clientId ) );
+        if ( ! resultSet.next() ) {
+            throw new RuntimeException("Task does not exists: " + clientId);
+        }
+
+        Gson gson = new GsonBuilder().create();
+
+        PolyphenyDbResponse.GetTask getTask = new PolyphenyDbResponse.GetTask(
+                gson.fromJson( resultSet.getString("schema_config"), SchemaConfig.class ),
+                gson.fromJson( resultSet.getString("data_config"), DataConfig.class ),
+                gson.fromJson( resultSet.getString("query_config"), QueryConfig.class ),
+                gson.fromJson( resultSet.getString("store_config"), StoreConfig.class ),
+                gson.fromJson( resultSet.getString("part_config"), PartitionConfig.class )
+        );
+
+        resultSet.close();
+        return getTask;
     }
 
 

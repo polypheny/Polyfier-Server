@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import connect.QueryLogConnection;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.cli.*;
@@ -53,8 +55,10 @@ public class PolyfierServer {
     private static void runServer() {
         LOGGER.info("Loading Configurations...");
         ServerConfig serverConfig = ServerConfig.fetch();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
         if ( ! serverConfig.hasAddress() ) {
-            serverConfig.setAddress( "localhost", 44567 );
+            serverConfig.setAddress( "0.0.0.0", 44567 );
         }
         if ( ! serverConfig.hasUrl() ) {
             serverConfig.setUrl( "jdbc:polypheny://localhost:20591/" );
@@ -62,6 +66,8 @@ public class PolyfierServer {
         if ( ! serverConfig.hasCredentials() ) {
             serverConfig.setCredentials("pa", "");
         }
+        log.debug("Configuration:");
+        log.debug(gson.toJson( serverConfig ));
         LOGGER.info("Connecting to PolyphenyDB Backend...");
         QueryLogConnection queryLogConnection = connectPolyphenyDB( serverConfig );
         LOGGER.info("Connection established.");

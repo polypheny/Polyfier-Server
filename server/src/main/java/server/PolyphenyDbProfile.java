@@ -16,6 +16,7 @@
 
 package server;
 
+import lombok.Setter;
 import server.config.SeedsConfig;
 import server.config.*;
 import lombok.Builder;
@@ -31,7 +32,8 @@ public class PolyphenyDbProfile implements Serializable {
     /**
      * Locates the PolyphenyDB instance in the database.
      */
-    private final String dbClientId;
+    @Setter // Todo separate profile key from content
+    private String profileKey;
 
     /**
      * Binds the PolyphenyDB instance to its creating PolyphenyControl instance.
