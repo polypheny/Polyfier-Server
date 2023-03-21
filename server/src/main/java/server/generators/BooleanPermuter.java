@@ -18,8 +18,8 @@ package server.generators;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.Nullable;
-import util.Tuple;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,10 +27,9 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * Permutation generator for boolean configurations. For a given set of possible configurations and a set of requested configurations
+ * Permutation generator for boolean configurations. For a given set of preset configurations and a set of permeable configurations
  * the Permuter implements a Supplier that returns a Map of configurations to Booleans, either on or off. The Map will contain
- * the set of all possible configurations, marked as either on or off, and will permute the requested configurations.
- * Alternatively a pre-configuration of some values can be provided.
+ * the set of all possible configurations, marked as either on or off, and will permute the permeable configurations.
  */
 @Slf4j
 public class BooleanPermuter implements Permuter {
@@ -68,17 +67,31 @@ public class BooleanPermuter implements Permuter {
         this.preConfiguration = preConfigured;
     }
 
+    /**
+     * Constructor for creating a new BooleanPermuter instance.
+     *
+     * @param nonPermeableConfigurations A HashSet of non-permeable configurations.
+     * @param permeableConfigurations A HashSet of permeable configurations.
+     * @param preConfiguration A Map containing pre-configurations.
+     */
     private BooleanPermuter( @NonNull HashSet<String> nonPermeableConfigurations, @NonNull HashSet<String> permeableConfigurations, @NonNull Map<String, String> preConfiguration ) {
-        Tuple<Integer, Integer> partition = preparePermutation( nonPermeableConfigurations, permeableConfigurations );
-        this.permutations = getPermutationStream( partition.left, partition.right ).toArray( String[]::new );
+        Pair<Integer, Integer> partition = preparePermutation( nonPermeableConfigurations, permeableConfigurations );
+        this.permutations = getPermutationStream( partition.getLeft(), partition.getRight() ).toArray( String[]::new );
         this.preConfiguration = preConfiguration;
     }
 
-    private Tuple<Integer, Integer> preparePermutation( @NonNull HashSet<String> nonPermeableConfigurations, @Nullable HashSet<String> permeableConfigurations ) {
+    /**
+     * Prepares the permutation by validating and partitioning the provided configurations.
+     *
+     * @param nonPermeableConfigurations A HashSet of non-permeable configurations.
+     * @param permeableConfigurations A HashSet of permeable configurations.
+     * @return A Pair containing the number of non-permeable configurations and the number of permeable configurations.
+     */
+    private Pair<Integer, Integer> preparePermutation( @NonNull HashSet<String> nonPermeableConfigurations, @Nullable HashSet<String> permeableConfigurations ) {
         assert permeableConfigurations != null;
         assert permeableConfigurations.stream().noneMatch( nonPermeableConfigurations::contains );
 
-        Tuple<Integer, Integer> partition = new Tuple<>( nonPermeableConfigurations.size(), permeableConfigurations.size() );
+        Pair<Integer, Integer> partition = Pair.of( nonPermeableConfigurations.size(), permeableConfigurations.size() );
         ArrayList<String> configurations = new ArrayList<>( permeableConfigurations );
         configurations.addAll( nonPermeableConfigurations );
 
@@ -87,6 +100,13 @@ public class BooleanPermuter implements Permuter {
         return partition;
     }
 
+    /**
+     * Generates a Stream of permutations based on the given number of non-permeable and permeable configurations.
+     *
+     * @param nonPermeableConfigurationsNo The number of non-permeable configurations.
+     * @param permeableConfigurationsNo The number of permeable configurations.
+     * @return A Stream of permutations represented as Bit-Strings.
+     */
     private Stream<String> getPermutationStream( final int nonPermeableConfigurationsNo, final int permeableConfigurationsNo ) {
         if ( log.isDebugEnabled() ) {
             log.debug("Creating Permutations for " + permeableConfigurationsNo + " permeable configurations...");
@@ -107,6 +127,12 @@ public class BooleanPermuter implements Permuter {
         );
     }
 
+    /**
+     * Counts the number of bits set to 1 in the given integer.
+     *
+     * @param i The integer for which to count the set bits.
+     * @return The number of bits set to 1.
+     */
     private int countBits( int i ) {
         int n = i;
         int m = 0;

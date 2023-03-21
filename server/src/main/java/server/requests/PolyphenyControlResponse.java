@@ -14,32 +14,13 @@
  * limitations under the License.
  */
 
-package server.responses;
+package server.requests;
 
 import lombok.AllArgsConstructor;
 import server.config.StartConfig;
 
 @AllArgsConstructor
 public class PolyphenyControlResponse {
-
-    public static class KeepAlive extends PolyphenyControlResponse {
-        public KeepAlive( int responseCode ) {
-        }
-    }
-
-    public static class SignIn extends PolyphenyControlResponse {
-        String cookie;
-
-        public SignIn( String cookie, int responseCode ) {
-            this.cookie = cookie;
-        }
-
-    }
-
-    public static class SignOut extends PolyphenyControlResponse {
-        public SignOut( int responseCode ) {
-        }
-    }
 
     public static class StartConfiguration extends PolyphenyControlResponse {
         String clientId;

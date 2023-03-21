@@ -20,13 +20,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 @AllArgsConstructor
 public class StartConfig extends Config implements Serializable {
 
-    HashMap<String, String> parameters;
+    Map<String, String> parameters;
 
     //...
 

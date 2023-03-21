@@ -14,20 +14,24 @@
  * limitations under the License.
  */
 
-package server.config;
+package connect;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.io.Serializable;
-import java.util.Map;
-
-@Getter
 @AllArgsConstructor
-public class DataConfig extends Config implements Serializable {
+public enum ConfigType {
+    SCHEMA("schema"),
+    DATA("data"),
+    QUERY("query"),
+    STORE("store"),
+    PART("part"),
+    START("start"),
+    LOGICAL_PLAN("logical"),
+    PHYSICAL_PLAN("physical"),
+    SEEDS("seeds"),
+    ERROR("error");
 
-    Map<String, String> parameters;
-
-    //...
-
+    @Getter
+    private final String signature;
 }

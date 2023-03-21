@@ -20,15 +20,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 @AllArgsConstructor
 public class QueryConfig extends Config implements Serializable {
 
-    HashMap<String, String> parameters;
+    Map<String, String> parameters;
 
-    HashMap<String, Double> weights;
+    Map<String, Double> weights;
 
     int complexity;
 

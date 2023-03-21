@@ -15,7 +15,6 @@ public class PolyfierServer {
 
     private static final Logger LOGGER;
     private static final CommandLineParser clParser;
-    private static final HelpFormatter hFormatter;
     private static final Options cliOptions;
 
 
@@ -43,7 +42,6 @@ public class PolyfierServer {
         mutuallyExclusiveOptions.setRequired(true);
         cliOptions.addOptionGroup(mutuallyExclusiveOptions);
         clParser = DefaultParser.builder().build();
-        hFormatter = new HelpFormatter();
     }
 
     private static void runServer( String host, int port ) {
@@ -83,16 +81,15 @@ public class PolyfierServer {
     }
 
     private static void runServer(ServerConfig serverConfig, QueryLogConnection queryLogConnection ) {
-        LOGGER.info("Configuring Server...");
-        Server polyfierServer = new Server( serverConfig, queryLogConnection );
-        LOGGER.info("Server Configured.");
         LOGGER.info("Running Server...");
-        try {
-            polyfierServer.run();
-        } catch ( Exception e ) {
-            throw new RuntimeException( e );
-        }
+        Thread server = new Thread( () -> new Server( serverConfig, queryLogConnection ) );
+        server.start();
         displayBanner( serverConfig );
+        try {
+            server.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void displayBanner( ServerConfig serverConfig ) {
@@ -113,7 +110,7 @@ public class PolyfierServer {
                                                     
                 """;
         String segment = "\n" + "-".repeat(120) + "\n";
-        LOGGER.info(new StringBuilder().append( segment ).append("\n").append( banner ).append( segment ).toString() );
+        LOGGER.info(segment + "\n" + banner + segment);
         LOGGER.info( "Polyfier-Server running... UI accessible on " + "http://" + serverConfig.getHost() + ":" + serverConfig.getPort() );
         LOGGER.info( "Polypheny-DB Backend connected on " + serverConfig.getUrl() + " and accessible on " + "http://" + serverConfig.getHost() + ":8080" );
         LOGGER.info( "If Polypheny-Control was used to start it, here is a link to that as well: " + "http://" + serverConfig.getHost() + ":8070" );
@@ -143,14 +140,6 @@ public class PolyfierServer {
         }
 
 
-        // Todo manage backend with this thread.
-        try {
-            while ( true ) {
-                Thread.sleep( 10000 );
-            }
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
 
 
     }

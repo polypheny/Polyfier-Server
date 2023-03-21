@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package server;
+package server.generators;
 
 import lombok.Setter;
 import server.config.SeedsConfig;
@@ -27,24 +27,11 @@ import java.sql.Timestamp;
 
 @Getter
 @Builder
-public class PolyphenyDbProfile implements Serializable {
-
-    /**
-     * Locates the PolyphenyDB instance in the database.
-     */
-    @Setter // Todo separate profile key from content
-    private String profileKey;
-
+public class Profile implements Serializable {
     /**
      * Binds the PolyphenyDB instance to its creating PolyphenyControl instance.
      */
     private final String apiKey;
-
-    /**
-     * Describes what kind of PolyphenyDB instance is started.
-     */
-    private final StartConfig startConfig;
-
     /**
      * Describes the schema that is either generated or preset on this PolyphenyDB Instance.
      */
@@ -64,6 +51,11 @@ public class PolyphenyDbProfile implements Serializable {
      * Describes which Datastores the PolyphenyDB instance uses.
      */
     private final StoreConfig storeConfig;
+
+    /**
+     * Describes what kind of PolyphenyDB instance is started.
+     */
+    private final StartConfig startConfig;
 
     /**
      * Describes how the data is partitioned in the PolyphenyDB instance.

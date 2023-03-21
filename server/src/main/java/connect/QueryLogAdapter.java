@@ -289,17 +289,16 @@ public class QueryLogAdapter {
                     .append("CREATE TABLE ").append( "polyfier.profiles " ).append("(\n")
 
                     // Fields
-                    .append("\t").append("profile ").append("varchar(36) ").append("NOT NULL ").append(",\n")
-                    .append("\t").append("profile_hash ").append("bigint ").append("NOT NULL").append(",\n")
-                    .append("\t").append("start_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
+                    .append("\t").append("profile_key ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("schema_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
-                    .append("\t").append("query_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("data_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
+                    .append("\t").append("query_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("store_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
+                    .append("\t").append("start_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("part_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
 
                     // Constraints
-                    .append("\t").append("PRIMARY KEY ( ").append("profile").append(" )\n")
+                    .append("\t").append("PRIMARY KEY ( ").append("profile_key").append(" )\n")
 
                     // Store
                     .append(") ").append("ON STORE ").append( RELATIONAL_ADAPTER_UNIQUE_NAME )
@@ -332,15 +331,15 @@ public class QueryLogAdapter {
                     .append("CREATE TABLE ").append( "polyfier.orders " ).append("(\n")
 
                     // Fields
-                    .append("\t").append("order_id ").append("varchar(36) ").append("NOT NULL ").append(",\n")
+                    .append("\t").append("order_key ").append("varchar(36) ").append("NOT NULL ").append(",\n")
                     .append("\t").append("api_key ").append("varchar ").append("NOT NULL").append(",\n")
-                    .append("\t").append("profile ").append("varchar(36) ").append("NOT NULL").append(",\n")
+                    .append("\t").append("profile_key ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("seeds ").append("varchar ").append("NOT NULL").append(",\n")
                     .append("\t").append("issued_at ").append("timestamp ").append("NOT NULL").append(",\n")
                     .append("\t").append("completed_at ").append("timestamp ").append("NULL " ).append(",\n")
 
                     // Constraints
-                    .append("\t").append("PRIMARY KEY ( ").append("order_id").append(" )\n")
+                    .append("\t").append("PRIMARY KEY ( ").append("order_key").append(" )\n")
 
                     // Store
                     .append(") ").append("ON STORE ").append( RELATIONAL_ADAPTER_UNIQUE_NAME )
@@ -355,8 +354,8 @@ public class QueryLogAdapter {
                     .append("CREATE TABLE ").append( "polyfier.results " ).append("(\n")
 
                     // Fields
-                    .append("\t").append("result_id ").append("varchar(36) ").append("NOT NULL ").append(",\n")
-                    .append("\t").append("order_id ").append("varchar(36) ").append("NOT NULL").append(",\n")
+                    .append("\t").append("result_key ").append("varchar(36) ").append("NOT NULL ").append(",\n")
+                    .append("\t").append("order_key ").append("varchar(36) ").append("NOT NULL").append(",\n")
                     .append("\t").append("seed ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("success ").append("boolean ").append("NOT NULL").append(",\n")
                     .append("\t").append("received_at ").append("timestamp ").append("NOT NULL").append(",\n")
@@ -368,7 +367,7 @@ public class QueryLogAdapter {
                     .append("\t").append("predicted_ms ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
 
                     // Constraints
-                    .append("\t").append("PRIMARY KEY ( ").append("result_id").append(" )\n")
+                    .append("\t").append("PRIMARY KEY ( ").append("result_key").append(" )\n")
 
                     // Store
                     .append(") ").append("ON STORE ").append( RELATIONAL_ADAPTER_UNIQUE_NAME )
@@ -385,7 +384,7 @@ public class QueryLogAdapter {
             """;
 
             // Results
-            statement.execute( String.format( constraint, "results", "res_fk1", "order_id", "orders", "order_id" ) );
+            statement.execute( String.format( constraint, "results", "res_fk1", "order_key", "orders", "order_key" ) );
 
             statement.execute( String.format( constraint, "results", "res_fk2", "error_hash", "error_configs", "error_config_hash" ) );
             statement.execute( String.format( constraint, "results", "res_fk3", "logical_hash", "logical_configs", "logical_config_hash" ) );
@@ -394,7 +393,7 @@ public class QueryLogAdapter {
 
             // Results
             statement.execute( String.format( constraint, "orders", "ord_fk1", "api_key", "nodes", "api_key" ) );
-            statement.execute( String.format( constraint, "orders", "ord_fk2", "profile", "profiles", "profile" ) );
+            statement.execute( String.format( constraint, "orders", "ord_fk2", "profile_key", "profiles", "profile_key" ) );
 
 
             // Profiles

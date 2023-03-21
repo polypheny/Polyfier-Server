@@ -1,6 +1,6 @@
 package logging;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
 import org.apache.logging.log4j.core.*;
 import org.apache.logging.log4j.core.appender.AbstractAppender;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
@@ -12,13 +12,12 @@ import org.jetbrains.annotations.Nullable;
 import java.io.Serializable;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Plugin(
         name = "QueueAppender",
         category = Core.CATEGORY_NAME,
         elementType = Appender.ELEMENT_TYPE)
+@Deprecated
 public class QueueAppender extends AbstractAppender {
     Gson gson;
 

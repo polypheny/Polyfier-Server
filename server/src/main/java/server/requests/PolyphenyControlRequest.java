@@ -27,6 +27,12 @@ public class PolyphenyControlRequest implements Serializable {
 
     private final String apiKey;
 
+    /**
+     * Request signaling the PolyphenyControl client is in either of three modes.
+     * IDLE - If the client is ready for a job.
+     * START - If the client is building a PolyphenyDB instance.
+     * BUSY - If the PolyphenyDB instance that is managed by the client is running.
+     */
     @Getter
     public static class KeepAlive extends PolyphenyControlRequest {
         private final String status;

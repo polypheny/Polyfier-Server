@@ -14,24 +14,20 @@
  * limitations under the License.
  */
 
-package server.generators;
+package connect;
 
-import org.bouncycastle.crypto.generators.BCrypt;
+import lombok.AllArgsConstructor;
 
-import java.util.UUID;
+@AllArgsConstructor
+public enum StatusType {
+    IDLE("IDLE"),
+    START("START"),
+    BUSY("BUSY");
 
-public abstract class APIKeys {
+    private final String status;
 
-    public static String generate() {
-        // Stub
-        return UUID.randomUUID().toString();
+    public String get() {
+        return this.status;
     }
-
-
-    public static boolean validate( String apiKey ) {
-        // Stub
-        return true;
-    }
-
 
 }

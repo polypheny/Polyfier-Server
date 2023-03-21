@@ -8,14 +8,11 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.SystemUtils;
-import server.generators.PolyphenyDbProfileGenerator;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ServerConfig implements Serializable {
@@ -48,22 +45,22 @@ public class ServerConfig implements Serializable {
         return this.user != null && this.password != null;
     }
 
-    public ServerConfig setUrl( String url ) {
+    public void setUrl(String url ) {
         this.url = url;
-        return this.save();
+        this.save();
     }
 
-    public ServerConfig setCredentials( String user, String password ) {
+    public void setCredentials(String user, String password ) {
         // Todo Encrypt / Decrypt...
         this.user = user;
         this.password = password;
-        return this.save();
+        this.save();
     }
 
-    public ServerConfig setAddress( String host, int port ) {
+    public void setAddress(String host, int port ) {
         this.host = host;
         this.port = port;
-        return this.save();
+        this.save();
     }
 
     public static ServerConfig fetch() {
@@ -98,7 +95,7 @@ public class ServerConfig implements Serializable {
         }
     }
 
-    private ServerConfig save() {
+    private void save() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
             if ( ! Files.exists(getConfigPath()) ) {
@@ -111,63 +108,6 @@ public class ServerConfig implements Serializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return this;
-    }
-
-    public static PolyphenyDbProfileGenerator getDefaultGenerator() {
-        HashMap<String, String> dataConfigPreset = new HashMap<>();
-
-        dataConfigPreset.put( "scale", "default");
-        dataConfigPreset.put("ConfigKey1", "ConfigValue1");
-        dataConfigPreset.put("ConfigKey2", "ConfigValue2");
-        dataConfigPreset.put("ConfigKey3", "ConfigValue3");
-        dataConfigPreset.put("ConfigKey4", "ConfigValue4");
-
-        HashMap<String, String> queryConfigPreset = new HashMap<>();
-
-        queryConfigPreset.put( "complexity", "4");
-        queryConfigPreset.put("ConfigKey1", "ConfigValue1");
-        queryConfigPreset.put("ConfigKey2", "ConfigValue2");
-        queryConfigPreset.put("ConfigKey3", "ConfigValue3");
-        queryConfigPreset.put("ConfigKey4", "ConfigValue4");
-
-
-        HashMap<String, String> storeConfigPreset = new HashMap<>();
-        List<String> storeConfigPermeable = List.of("HSQLDB", "POSTGRESQL", "MONETDB", "MONGODB" );
-        storeConfigPreset.put( "COTTONTAIL", "false");
-        storeConfigPreset.put( "NEO4J", "false");
-        storeConfigPreset.put( "CASSANDRA", "false");
-
-
-        HashMap<String, String> partConfigPreset = new HashMap<>();
-        partConfigPreset.put("ConfigKey1", "ConfigValue1");
-        partConfigPreset.put("ConfigKey2", "ConfigValue2");
-        partConfigPreset.put("ConfigKey3", "ConfigValue3");
-        partConfigPreset.put("ConfigKey4", "ConfigValue4");
-
-
-        HashMap<String, String> startConfigPreset = new HashMap<>();
-        startConfigPreset.put("ConfigKey1", "ConfigValue1");
-        startConfigPreset.put("ConfigKey2", "ConfigValue2");
-        startConfigPreset.put("ConfigKey3", "ConfigValue3");
-        startConfigPreset.put("ConfigKey4", "ConfigValue4");
-
-
-
-        return PolyphenyDbProfileGenerator.create(
-                null,
-                dataConfigPreset,
-                null,
-                queryConfigPreset,
-                storeConfigPermeable,
-                storeConfigPreset,
-                null,
-                partConfigPreset,
-                null,
-                startConfigPreset,
-                false
-        );
-
     }
 
 }

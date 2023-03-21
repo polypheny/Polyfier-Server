@@ -19,6 +19,12 @@ package server.generators;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * The Permuter interface provides methods to handle permutation operations
+ * for a given set of configurations. Implementations of this interface
+ * should be responsible for generating permutations and managing iteration
+ * through the available permutations.
+ */
 public interface Permuter {
 
     /**

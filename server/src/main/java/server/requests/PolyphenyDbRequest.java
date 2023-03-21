@@ -22,34 +22,31 @@ import lombok.Getter;
 import java.io.Serializable;
 
 @AllArgsConstructor
+@Getter
 public class PolyphenyDbRequest implements Serializable {
 
     private final String apiKey;
-    private final String cookie;
+    private final String orderKey;
 
-    public static class Task extends PolyphenyDbRequest {
-
-        public Task( String apiKey, String cookie ) {
-            super(apiKey, cookie);
+    public static class Job extends PolyphenyDbRequest {
+        public Job(String apiKey, String orderKey ) {
+            super(apiKey, orderKey);
         }
-
     }
 
     @Getter
     public static class Result extends PolyphenyDbRequest {
+        public Long seed;
+        public Long resultSetHash;
+        public Boolean success;
+        public String error;
+        public String logical;
+        public String physical;
+        public Long actual;
+        public Long predicted;
 
-        String orderId;
-        Long seed;
-        Long resultSetHash;
-        Boolean success;
-        String error;
-        String logical;
-        String physical;
-        Long actual;
-        Long predicted;
-
-        public Result(String apiKey, String cookie) {
-            super(apiKey, cookie);
+        public Result(String apiKey, String orderKey) {
+            super(apiKey, orderKey);
         }
     }
 

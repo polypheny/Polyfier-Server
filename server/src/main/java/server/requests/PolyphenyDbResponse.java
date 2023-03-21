@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package server.responses;
+package server.requests;
 
 import lombok.Getter;
+import lombok.Setter;
 import server.config.*;
 
 import java.io.Serializable;
@@ -24,14 +25,17 @@ import java.io.Serializable;
 public class PolyphenyDbResponse implements Serializable {
 
     @Getter
-    public static class GetTask extends PolyphenyDbResponse {
+    public static class Job extends PolyphenyDbResponse {
         private final SchemaConfig schemaConfig;
         private final DataConfig dataConfig;
         private final QueryConfig queryConfig;
         private final StoreConfig storeConfig;
         private final PartitionConfig partitionConfig;
 
-        public GetTask(
+        @Setter
+        private SeedsConfig seedsConfig;
+
+        public Job(
                 SchemaConfig schemaConfig,
                 DataConfig dataConfig,
                 QueryConfig queryConfig,
