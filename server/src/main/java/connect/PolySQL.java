@@ -375,7 +375,7 @@ public enum PolySQL {
                 preparedStatement.setObject( 7, args[6], Types.BIGINT);
                 preparedStatement.setObject( 8, args[7], Types.BIGINT);
                 preparedStatement.setObject( 9, args[8], Types.BIGINT);
-                preparedStatement.setLong( 10, (Long) args[9] );
+                preparedStatement.setObject( 10, args[9], Types.BIGINT );
                 statement = preparedStatement;
             }
 //            case COMPOSITE_JOB2 -> {
