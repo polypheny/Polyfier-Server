@@ -1,19 +1,17 @@
 package server;
 
-import connect.QueryLogConnection;
 import io.javalin.Javalin;
 import lombok.extern.slf4j.Slf4j;
-import server.generators.ProfileGenerator;
-import server.requests.Requests;
+import server.messages.ClientMessage;
+import server.messages.ServerMessage;
+
+import java.util.Objects;
 
 @Slf4j
 public class Server {
     private static Javalin app;
 
-    public Server( ServerConfig serverConfig, QueryLogConnection queryLogConnection ) {
-        Requests.setQueryLogConnection( queryLogConnection );
-        Requests.setProfileGenerator( ProfileGenerator.getProfileGenerator() );
-
+    public Server( ServerConfig serverConfig ) {
         setUpAPI();
         app.start( serverConfig.getHost(), serverConfig.getPort() );
     }
@@ -24,29 +22,54 @@ public class Server {
         app.before( ctx -> log.debug("REQ: [" + ctx.ip() + "] - [" + ctx.req().getMethod() + "] ~" + ctx.req().getPathInfo() + "\t" + ctx.body() ) );
         app.after( ctx -> {} ); //
 
-        app.get("/", ctx -> Requests.handleStringResponse( ctx, "text/html", "web/html/base.html"));
-        app.get("/log", ctx -> Requests.handleStringResponse( ctx, "text/html", "web/html/log.html"));
-        app.get("/web/css/base.css", ctx -> Requests.handleStringResponse( ctx, "text/css", "web/css/base.css"));
-        app.get("/web/css/log.css", ctx -> Requests.handleStringResponse( ctx, "text/css", "web/css/log.css"));
-        app.get("/web/js/log.js", ctx -> Requests.handleStringResponse( ctx, "text/javascript", "web/js/log.js"));
-        app.get("/web/js/base.js", ctx -> Requests.handleStringResponse( ctx, "text/javascript","web/js/base.js"));
+        // HTML
+        app.get("/", ctx -> ServerMessage.handleStringResponse( ctx, "text/html", "web/html/base.html"));
+        app.get("/log", ctx -> ServerMessage.handleStringResponse( ctx, "text/html", "web/html/log.html"));
+        app.get("/sys", ctx -> ServerMessage.handleStringResponse( ctx, "text/html", "web/html/sys.html"));
 
-        app.get("/web/img/polyphenydb-logo.png", ctx -> Requests.handleMediaResponse( ctx, "image/png", "web/img/polyphenydb-logo.png" ));
-        app.get("/web/img/log-icon.png", ctx -> Requests.handleMediaResponse( ctx, "image/png", "web/img/log-icon.png" ));
-        app.get("/web/img/icon.png", ctx -> Requests.handleMediaResponse( ctx, "image/png", "web/img/icon.png" ));
-        app.get("/web/img/polyfier-schema.png", ctx -> Requests.handleMediaResponse( ctx, "image/png", "web/img/polyfier-schema.png" ));
-        app.get("/web/fonts/jetbrains_mono/JetBrainsMono-Italic-VariableFont_wght.ttf", ctx -> Requests.handleMediaResponse( ctx, "font/ttf", "web/fonts/jetbrains_mono/JetBrainsMono-Italic-VariableFont_wght.ttf" ));
+        // CSS
+        app.get("/web/css/base.css", ctx -> ServerMessage.handleStringResponse( ctx, "text/css", "web/css/base.css"));
+        app.get("/web/css/log.css", ctx -> ServerMessage.handleStringResponse( ctx, "text/css", "web/css/log.css"));
+        app.get("/web/css/sys.css", ctx -> ServerMessage.handleStringResponse( ctx, "text/css", "web/css/sys.css"));
 
-        //app.get("/request/browser/status-update.json", Requests::handleStatusRequest );
+        // JavaScript
+        app.get("/web/js/log.js", ctx -> ServerMessage.handleStringResponse( ctx, "text/javascript", "web/js/log.js"));
+        app.get("/web/js/base.js", ctx -> ServerMessage.handleStringResponse( ctx, "text/javascript","web/js/base.js"));
+        app.get("/web/js/sys.js", ctx -> ServerMessage.handleStringResponse( ctx, "text/javascript","web/js/sys.js"));
 
-        app.post("/request/polypheny-control/sign-in", Requests::handlePolyphenyControlSignIn );
-        app.post( "/request/polypheny-control/sign-out", Requests::handlePolyphenyControlSignOut );
-        app.post( "/request/polypheny-control/keep-alive", Requests::handlePolyphenyControlKeepAlive );
-        app.post("/request/polypheny-control/get-task", Requests::handlePolyphenyControlJob);
+        // Other Files
+        app.get("/web/img/polyphenydb-logo.png", ctx -> ServerMessage.handleMediaResponse( ctx, "image/png", "web/img/polyphenydb-logo.png" ));
+        app.get("/web/img/log-icon.png", ctx -> ServerMessage.handleMediaResponse( ctx, "image/png", "web/img/log-icon.png" ));
+        app.get("/web/img/icon.png", ctx -> ServerMessage.handleMediaResponse( ctx, "image/png", "web/img/icon.png" ));
+        app.get("/web/img/polyfier-schema.png", ctx -> ServerMessage.handleMediaResponse( ctx, "image/png", "web/img/polyfier-schema.png" ));
+        app.get("/web/fonts/jetbrains_mono/JetBrainsMono-Italic-VariableFont_wght.ttf", ctx -> ServerMessage.handleMediaResponse( ctx, "font/ttf", "web/fonts/jetbrains_mono/JetBrainsMono-Italic-VariableFont_wght.ttf" ));
+
+        // API WebSocket
+        app.ws("/ws", ws -> {
+            ws.onConnect( session  -> {
+                log.info("WebSocket connected /ws" + session.getSessionId());
+            });
+            ws.onClose( session  -> {
+                log.info("WebSocket closed /ws:" + session.getSessionId() + " StatusCode: " + session.status() + " Reason: " + session.reason() );
+                ClientMessage.handleConnectionLoss( session );
+            });
+            ws.onError( session  -> {
+                log.info("WebSocket error for /ws: " + session.getSessionId());
+                Objects.requireNonNull(session.error()).printStackTrace();
+            });
+            // API Message Processing
+            ws.onMessage( session -> {
+                log.info("WebSocket Message for /ws: " + session.message() );
+                try {
+                    ClientMessage.processMessage( session );
+                } catch (Exception e) {
+                    log.error("Error:", e);
+                    throw new RuntimeException(e);
+                }
+            } );
+        });
 
 
-        app.post("/request/polypheny-db/get-task", Requests::handlePolyphenyDbJob);
-        app.post("/request/polypheny-db/result", Requests::handlePolyphenyDbResult);
     }
 
 

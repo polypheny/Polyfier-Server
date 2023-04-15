@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package server.config;
+package server.profile;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.Builder;
@@ -25,6 +25,7 @@ import java.util.stream.LongStream;
 
 @Slf4j
 public class SeedsConfig extends Config implements Serializable {
+
 
     private final List<String> ranges;
 

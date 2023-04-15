@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package server.config;
+package server.profile;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,9 +24,13 @@ import java.util.Map;
 
 @Getter
 @AllArgsConstructor
-public class DataConfig extends Config implements Serializable {
+public class QueryConfig extends Config implements Serializable {
 
     Map<String, String> parameters;
+
+    Map<String, Double> weights;
+
+    int complexity;
 
     //...
 

@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-package server.config;
+package server.clients;
 
+import io.javalin.websocket.WsContext;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serializable;
 
 @Getter
+@Setter
 @AllArgsConstructor
-public class LogicalPlanConfig extends Config {
-
-    private final String logicalPlan;
-
+public class Browser implements Serializable {
+    private transient WsContext wsContext;
 }

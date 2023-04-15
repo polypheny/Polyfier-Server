@@ -5,38 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b24353-915d-4dcf-89f4-70ad1157ffa4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/connect/ConfigType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/connect/PolySQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/connect/StatusType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/Requests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/img/polyfier-schema.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/logging/WebSocketAppender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/clients/Browser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/clients/PCtrl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/clients/PDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/messages/ClientMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/messages/ServerMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/css/sys.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/doc/api-documentation.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/html/sys.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/package/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/package/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/package/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/package/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/sys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/test/java/TestClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/PolyfierServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/PolyfierServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connect/PolySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/PolySQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/PolyphenyDbProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/logging/QueueAppender.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/DataConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/config/DataConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/PartitionConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/config/PartitionConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/QueryConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/config/QueryConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/StartConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/config/StartConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/StoreConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/config/StoreConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/BooleanPermuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/BooleanPermuter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/Permuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/Permuter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/PolyphenyDbProfileGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/generators/ProfileGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/DataConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/DataConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/ErrorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/ErrorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/LogicalPlanConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/LogicalPlanConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/PartitionConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/PartitionConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/PhysicalPlanConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/PhysicalPlanConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/QueryConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/QueryConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/SchemaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/SchemaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/SeedsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/SeedsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/StartConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/StartConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/StoreConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/StoreConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/BooleanPermuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/generators/BooleanPermuter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/Permuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/generators/Permuter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/ProfileGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/generators/ProfileGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyControlResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyControlResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/responses/PolyphenyControlResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyControlResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/responses/PolyphenyDbResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/util/PolyfierJob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/util/Tuple.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/web/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/web/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/web/css/log.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/web/css/log.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/requests/Requests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/Requests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/web/html/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/web/html/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/web/html/log.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/web/html/log.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/web/pdf/polyfier-schema.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/web/js/log.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/log.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,45 +124,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mandelbrot/repos/polyfier-server/server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Console Font&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "/Users/mandelbrot/repos/polyfier-server/server/src/main/java/server/clientcodetmp/pdb/profile",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;hsqldb&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "hsqldb"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.jetbrains" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/main/java/server/clientcodetmp/pdb/profile" />
+      <recent name="$PROJECT_DIR$/server/src/main/java/server/clientcodetmp/pctrl/profile" />
+      <recent name="$PROJECT_DIR$/server/src/main/resources/web/html" />
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/main/resources/web/js" />
+      <recent name="$PROJECT_DIR$/server/src/main/resources" />
+      <recent name="$PROJECT_DIR$/server/src/main/resources/logging" />
       <recent name="$PROJECT_DIR$/server/src/main/resources/web/img" />
       <recent name="$PROJECT_DIR$/server/src/main/resources/web/pdf" />
-      <recent name="$PROJECT_DIR$/server/src/main/resources/web/js" />
-      <recent name="$PROJECT_DIR$/server/src/main/resources/web/css" />
-      <recent name="$PROJECT_DIR$/server/src/main/resources/web/html" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -155,7 +174,7 @@
       <recent name="server.requests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Polyfier-Server (reset)">
+  <component name="RunManager" selected="Application.Polyfier-Server">
     <configuration name="Polyfier-Server (reset)" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="PolyfierServer" />
       <module name="Polyfier-Server.server.main" />
@@ -198,7 +217,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PermuterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestClient" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -211,7 +230,7 @@
           <list>
             <option value=":server:test" />
             <option value="--tests" />
-            <option value="&quot;util.PermuterTest&quot;" />
+            <option value="&quot;TestClient&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -221,7 +240,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PermuterTest.permuterReturnsCorrectPermutations (2)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestClient.testServer" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -234,12 +253,54 @@
           <list>
             <option value=":server:test" />
             <option value="--tests" />
-            <option value="&quot;util.PermuterTest.permuterReturnsCorrectPermutations&quot;" />
+            <option value="&quot;TestClient.testServer&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="polyfier-server [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="polyfier-server [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -265,66 +326,24 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="polyfier-server [idea]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="idea" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="polyfier-server [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Application.Polyfier-Server" />
       <item itemvalue="Application.Polyfier-Server (reset)" />
       <item itemvalue="Application.purge" />
       <item itemvalue="Application.run" />
-      <item itemvalue="Gradle.PermuterTest" />
-      <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations (2)" />
+      <item itemvalue="Gradle.polyfier-server [build]" />
+      <item itemvalue="Gradle.polyfier-server [clean]" />
+      <item itemvalue="Gradle.TestClient" />
+      <item itemvalue="Gradle.TestClient.testServer" />
       <item itemvalue="Gradle.polyfier-server [dependencies]" />
-      <item itemvalue="Gradle.polyfier-server [test]" />
-      <item itemvalue="Gradle.polyfier-server [idea]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TestClient.testServer" />
+        <item itemvalue="Gradle.polyfier-server [build]" />
+        <item itemvalue="Gradle.polyfier-server [clean]" />
+        <item itemvalue="Gradle.TestClient" />
         <item itemvalue="Gradle.polyfier-server [dependencies]" />
-        <item itemvalue="Gradle.PermuterTest.permuterReturnsCorrectPermutations (2)" />
-        <item itemvalue="Gradle.PermuterTest" />
-        <item itemvalue="Gradle.polyfier-server [test]" />
-        <item itemvalue="Gradle.polyfier-server [idea]" />
       </list>
     </recent_temporary>
   </component>
@@ -365,7 +384,15 @@
       <workItem from="1678445785319" duration="5389000" />
       <workItem from="1678655945075" duration="602000" />
       <workItem from="1679342219424" duration="13000" />
-      <workItem from="1679388375635" duration="41732000" />
+      <workItem from="1679388375635" duration="43655000" />
+      <workItem from="1680279090818" duration="20639000" />
+      <workItem from="1680615748986" duration="954000" />
+      <workItem from="1680684853438" duration="1605000" />
+      <workItem from="1680885324609" duration="39897000" />
+      <workItem from="1680968000200" duration="6665000" />
+      <workItem from="1680975285342" duration="1725000" />
+      <workItem from="1681402834312" duration="12562000" />
+      <workItem from="1681556285140" duration="22408000" />
     </task>
     <servers />
   </component>
@@ -416,6 +443,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.RuntimeException" package="java.lang" />
           <option name="timeStamp" value="5" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="9" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

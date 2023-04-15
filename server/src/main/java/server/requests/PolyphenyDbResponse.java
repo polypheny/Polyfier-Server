@@ -17,8 +17,7 @@
 package server.requests;
 
 import lombok.Getter;
-import lombok.Setter;
-import server.config.*;
+import server.profile.*;
 
 import java.io.Serializable;
 
@@ -31,16 +30,15 @@ public class PolyphenyDbResponse implements Serializable {
         private final QueryConfig queryConfig;
         private final StoreConfig storeConfig;
         private final PartitionConfig partitionConfig;
-
-        @Setter
-        private SeedsConfig seedsConfig;
+        private final SeedsConfig seedsConfig;
 
         public Job(
                 SchemaConfig schemaConfig,
                 DataConfig dataConfig,
                 QueryConfig queryConfig,
                 StoreConfig storeConfig,
-                PartitionConfig partitionConfig
+                PartitionConfig partitionConfig,
+                SeedsConfig seedsConfig
                 ) {
             super();
             this.schemaConfig = schemaConfig;
@@ -48,6 +46,7 @@ public class PolyphenyDbResponse implements Serializable {
             this.queryConfig = queryConfig;
             this.storeConfig = storeConfig;
             this.partitionConfig = partitionConfig;
+            this.seedsConfig = seedsConfig;
         }
 
     }

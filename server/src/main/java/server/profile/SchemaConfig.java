@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package server.config;
-
+package server.profile;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 @Getter
 @AllArgsConstructor
-public class PhysicalPlanConfig extends Config {
+public class SchemaConfig extends Config implements Serializable {
 
-    private final String physicalPlan;
+    String schemaType;
 
 }
-

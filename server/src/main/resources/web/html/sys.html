@@ -18,32 +18,31 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="/web/css/base.css">
-    <link rel="stylesheet" href="/web/css/log.css">
-    <link rel="icon" type="image/png" href="/web/img/icon.png">
+    <link rel="stylesheet" href="/web/css/sys.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <meta charset="UTF-8">
     <title>Polyfier Alpha v0.1</title>
 </head>
 <body>
-</body>
 <div class="main-container">
-    <div class="menu-container">
-        <div class="menu-item menu-item-shift" id="menu-item-sys" onclick="window.location = '/sys'">
-        </div>
-        <div class="menu-item menu-item-shift">
-            <img src="/web/img/polyphenydb-logo.png" alt="Polypheny-DB Logo">
-        </div>
+  <div class="menu-container">
+    <div class="menu-item menu-item-shift" id="menu-item-log" onclick="window.location = '/log'">
+        <img src="/web/img/log-icon.png" alt="Polypheny-DB Logo">
     </div>
-    <div class="site-container" id="site-container">
-        <div class="log-container">
-            <div class="log-container-bar">
-                <h2>POLYFIER LOG</h2>
-            </div>
-            <div class="log-container-window">
-                <label for="log-area"></label>
-                <textarea id="log-area" name="log-area"></textarea>
-            </div>
-        </div>
+    <div class="menu-item menu-item-shift">
+      <img src="/web/img/polyphenydb-logo.png" alt="Polypheny-DB Logo">
     </div>
+  </div>
+  <div class="site-container" id="site-container">
+      <div class="sys-outer">
+          <div class="sys-inner">
+              <div class="sys-column"></div>
+              <div class="sys-column"></div>
+          </div>
+      </div>
+  </div>
 </div>
 <script src="/web/js/base.js"></script>
-<script src="/web/js/log.js"></script>
+<script src="/web/js/sys.js"></script>
+</body>
 </html>

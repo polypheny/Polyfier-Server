@@ -21,6 +21,7 @@ import lombok.Getter;
 
 import java.io.Serializable;
 
+
 @AllArgsConstructor
 @Getter
 public class PolyphenyDbRequest implements Serializable {
@@ -28,12 +29,18 @@ public class PolyphenyDbRequest implements Serializable {
     private final String apiKey;
     private final String orderKey;
 
+    /**
+     * Mirrors the request-body send by Polypheny-DB in the class PolyfierProcess at job request.
+     */
     public static class Job extends PolyphenyDbRequest {
-        public Job(String apiKey, String orderKey ) {
-            super(apiKey, orderKey);
+        public Job( String apiKey, String orderKey ) {
+            super( apiKey, orderKey );
         }
     }
 
+    /**
+     * Mirrors the class PolyfierResult in the polyfier module of Polypheny-DB.
+     */
     @Getter
     public static class Result extends PolyphenyDbRequest {
         public Long seed;
@@ -45,8 +52,8 @@ public class PolyphenyDbRequest implements Serializable {
         public Long actual;
         public Long predicted;
 
-        public Result(String apiKey, String orderKey) {
-            super(apiKey, orderKey);
+        public Result( String apiKey, String orderKey ) {
+            super( apiKey, orderKey );
         }
     }
 

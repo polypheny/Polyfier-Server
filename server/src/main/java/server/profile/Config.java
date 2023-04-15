@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package server.config;
+package server.profile;
 
 import com.google.gson.GsonBuilder;
 import connect.ConfigType;

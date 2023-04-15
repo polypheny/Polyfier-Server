@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package server.generators;
+package server.profile.generators;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -119,9 +119,6 @@ public class BooleanPermuter implements Permuter {
         }).map( Integer::toBinaryString ).map(
                 s -> {
                     s = "0".repeat( Math.abs(s.length() - permeableConfigurationsNo ) ) + s + "0".repeat( nonPermeableConfigurationsNo );
-                    if ( log.isDebugEnabled() ) {
-                        log.debug("\t Permuted Bits: b'" + s + "'");
-                    }
                     return s;
                 }
         );

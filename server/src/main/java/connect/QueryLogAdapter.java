@@ -28,6 +28,7 @@ import java.util.StringJoiner;
 
 @Slf4j
 public class QueryLogAdapter {
+    private static final java.sql.Driver DRIVER = new Driver();
     public static final String DOCUMENT_ADAPTER_UNIQUE_NAME = "doc_query_log";
     public static final String DOCUMENT_ADAPTER = "mongodb";
     public static final String DOCUMENT_ADAPTER_CONFIG = """
@@ -44,12 +45,22 @@ public class QueryLogAdapter {
         props.setProperty( "user", user );
         props.setProperty( "password", password );
         try {
-            Driver driver = new Driver();
-            Connection connection = (Connection) driver.connect( url, props );
-
-            // Connection connection = DriverManager.getConnection( url, props );
-            configure( connection );
+            Connection connection = DRIVER.connect( url, props );
             return Optional.of( connection );
+        } catch ( SQLException e ) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setUp( String url, String user, String password ) {
+        Properties props = new Properties();
+        props.setProperty( "user", user );
+        props.setProperty( "password", password );
+        try {
+            Driver driver = new Driver();
+            Connection connection = DRIVER.connect( url, props );
+            configure( connection );
+            connection.commit();
         } catch ( SQLException e ) {
             throw new RuntimeException(e);
         }
@@ -61,7 +72,7 @@ public class QueryLogAdapter {
     }
 
     public boolean resetParameter() {
-        // Todo implement reset
+        // Todo implement reset -> UI
         return true;
     }
 
@@ -284,12 +295,31 @@ public class QueryLogAdapter {
             log.debug("Create Table \n\n" + startConfigs );
             statement.execute( startConfigs );
 
-            // Create clients Table
-            String profiles = new StringBuilder()
-                    .append("CREATE TABLE ").append( "polyfier.profiles " ).append("(\n")
+            String pctrl = new StringBuilder()
+                    .append("CREATE TABLE ").append( "polyfier.pctrl " ).append("(\n")
+
+                    .append("\t").append("pctrlKey ").append("varchar(36) ").append("NOT NULL").append(",\n")
+                    .append("\t").append("branch ").append("varchar ").append("NOT NULL").append(",\n")
+                    .append("\t").append("registeredAt ").append("timestamp ").append("NOT NULL").append(",\n")
+
+                    // Constraints
+                    .append("\t").append("PRIMARY KEY ( ").append("pctrlKey").append(" )\n")
+
+                    // Store
+                    .append(") ").append("ON STORE ").append( RELATIONAL_ADAPTER_UNIQUE_NAME )
+                    .toString();
+
+            log.debug("Create Table \n\n" + pctrl );
+            statement.execute( pctrl );
+
+            String pdb = new StringBuilder()
+                    .append("CREATE TABLE ").append( "polyfier.pdb " ).append("(\n")
 
                     // Fields
-                    .append("\t").append("profile_key ").append("bigint ").append("NOT NULL").append(",\n")
+                    .append("\t").append("pdbKey ").append("varchar(36) ").append("NOT NULL ").append(",\n")
+                    .append("\t").append("branch ").append("varchar ").append("NOT NULL").append(",\n")
+                    .append("\t").append("registeredAt ").append("timestamp ").append("NOT NULL").append(",\n")
+                    .append("\t").append("pctrlKey ").append("varchar(36) ").append("NOT NULL ").append(",\n")
                     .append("\t").append("schema_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("data_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("query_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
@@ -298,76 +328,33 @@ public class QueryLogAdapter {
                     .append("\t").append("part_config_hash ").append("bigint ").append("NOT NULL").append(",\n")
 
                     // Constraints
-                    .append("\t").append("PRIMARY KEY ( ").append("profile_key").append(" )\n")
+                    .append("\t").append("PRIMARY KEY ( ").append("pdbKey").append(" )\n")
 
                     // Store
                     .append(") ").append("ON STORE ").append( RELATIONAL_ADAPTER_UNIQUE_NAME )
                     .toString();
 
-            log.debug("Create Table \n\n" + profiles );
-            statement.execute( profiles );
-
-
-            String nodes = new StringBuilder()
-                    .append("CREATE TABLE ").append( "polyfier.nodes " ).append("(\n")
-
-                    // Fields
-                    .append("\t").append("api_key ").append("varchar ").append("NOT NULL").append(",\n")
-                    .append("\t").append("logged_in ").append("boolean ").append("NOT NULL").append(",\n")
-                    .append("\t").append("last_seen ").append("timestamp ").append("NOT NULL").append(",\n")
-                    .append("\t").append("status ").append("varchar ").append("NOT NULL").append(",\n")
-
-                    // Constraints
-                    .append("\t").append("PRIMARY KEY ( ").append("api_key").append(" )\n")
-
-                    // Store
-                    .append(") ").append("ON STORE ").append( RELATIONAL_ADAPTER_UNIQUE_NAME )
-                    .toString();
-
-            log.debug("Create Table \n\n" + nodes );
-            statement.execute( nodes );
-
-            String orders = new StringBuilder()
-                    .append("CREATE TABLE ").append( "polyfier.orders " ).append("(\n")
-
-                    // Fields
-                    .append("\t").append("order_key ").append("varchar(36) ").append("NOT NULL ").append(",\n")
-                    .append("\t").append("api_key ").append("varchar ").append("NOT NULL").append(",\n")
-                    .append("\t").append("profile_key ").append("bigint ").append("NOT NULL").append(",\n")
-                    .append("\t").append("seeds ").append("varchar ").append("NOT NULL").append(",\n")
-                    .append("\t").append("issued_at ").append("timestamp ").append("NOT NULL").append(",\n")
-                    .append("\t").append("completed_at ").append("timestamp ").append("NULL " ).append(",\n")
-
-                    // Constraints
-                    .append("\t").append("PRIMARY KEY ( ").append("order_key").append(" )\n")
-
-                    // Store
-                    .append(") ").append("ON STORE ").append( RELATIONAL_ADAPTER_UNIQUE_NAME )
-                    .toString();
-
-
-            log.debug("Create Table \n\n" + orders );
-            statement.execute( orders );
+            log.debug("Create Table \n\n" + pdb );
+            statement.execute( pdb );
 
             // Create polyfier_results Table
             String results = new StringBuilder()
                     .append("CREATE TABLE ").append( "polyfier.results " ).append("(\n")
 
                     // Fields
-                    .append("\t").append("result_key ").append("varchar(36) ").append("NOT NULL ").append(",\n")
-                    .append("\t").append("order_key ").append("varchar(36) ").append("NOT NULL").append(",\n")
+                    .append("\t").append("resultKey ").append("varchar(36) ").append("NOT NULL ").append(",\n")
+                    .append("\t").append("pdbKey ").append("varchar(36) ").append("NOT NULL").append(",\n")
                     .append("\t").append("seed ").append("bigint ").append("NOT NULL").append(",\n")
                     .append("\t").append("success ").append("boolean ").append("NOT NULL").append(",\n")
-                    .append("\t").append("received_at ").append("timestamp ").append("NOT NULL").append(",\n")
-                    .append("\t").append("error_hash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
-                    .append("\t").append("result_set_hash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
-                    .append("\t").append("logical_hash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
-                    .append("\t").append("physical_hash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
-                    .append("\t").append("actual_ms ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
-                    .append("\t").append("predicted_ms ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
+                    .append("\t").append("receivedAt ").append("timestamp ").append("NOT NULL").append(",\n")
+                    .append("\t").append("errorHash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
+                    .append("\t").append("resultSetHash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
+                    .append("\t").append("logicalHash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
+                    .append("\t").append("physicalHash ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
+                    .append("\t").append("execTime ").append("bigint ").append("NULL ").append("DEFAULT NULL").append(",\n")
 
                     // Constraints
-                    .append("\t").append("PRIMARY KEY ( ").append("result_key").append(" )\n")
+                    .append("\t").append("PRIMARY KEY ( ").append("resultKey").append(" )\n")
 
                     // Store
                     .append(") ").append("ON STORE ").append( RELATIONAL_ADAPTER_UNIQUE_NAME )
@@ -384,27 +371,20 @@ public class QueryLogAdapter {
             """;
 
             // Results
-            statement.execute( String.format( constraint, "results", "res_fk1", "order_key", "orders", "order_key" ) );
-
-            statement.execute( String.format( constraint, "results", "res_fk2", "error_hash", "error_configs", "error_config_hash" ) );
-            statement.execute( String.format( constraint, "results", "res_fk3", "logical_hash", "logical_configs", "logical_config_hash" ) );
-            statement.execute( String.format( constraint, "results", "res_fk4", "physical_hash", "physical_configs", "physical_config_hash" ) );
+            statement.execute( String.format( constraint, "results", "res_fk1", "pdbKey", "pdb", "pdbKey" ) );
+            statement.execute( String.format( constraint, "results", "res_fk2", "errorHash", "error_configs", "error_config_hash" ) );
+            statement.execute( String.format( constraint, "results", "res_fk3", "logicalHash", "logical_configs", "logical_config_hash" ) );
+            statement.execute( String.format( constraint, "results", "res_fk4", "physicalHash", "physical_configs", "physical_config_hash" ) );
 
 
             // Results
-            statement.execute( String.format( constraint, "orders", "ord_fk1", "api_key", "nodes", "api_key" ) );
-            statement.execute( String.format( constraint, "orders", "ord_fk2", "profile_key", "profiles", "profile_key" ) );
-
-
-            // Profiles
-            statement.execute( String.format( constraint, "profiles", "pro_fk1", "start_config_hash", "start_configs", "start_config_hash" ) );
-            statement.execute( String.format( constraint, "profiles", "pro_fk2", "schema_config_hash", "schema_configs", "schema_config_hash" ) );
-            statement.execute( String.format( constraint, "profiles", "pro_fk3", "query_config_hash", "query_configs", "query_config_hash" ) );
-            statement.execute( String.format( constraint, "profiles", "pro_fk4", "data_config_hash", "data_configs", "data_config_hash" ) );
-            statement.execute( String.format( constraint, "profiles", "pro_fk5", "store_config_hash", "store_configs", "store_config_hash" ) );
-            statement.execute( String.format( constraint, "profiles", "pro_fk6", "part_config_hash", "part_configs", "part_config_hash" ) );
-
-
+            statement.execute( String.format( constraint, "pdb", "pdb_fk1", "pctrlKey", "pctrl", "pctrlKey" ) );
+            statement.execute( String.format( constraint, "pdb", "pro_fk1", "start_config_hash", "start_configs", "start_config_hash" ) );
+            statement.execute( String.format( constraint, "pdb", "pro_fk2", "schema_config_hash", "schema_configs", "schema_config_hash" ) );
+            statement.execute( String.format( constraint, "pdb", "pro_fk3", "query_config_hash", "query_configs", "query_config_hash" ) );
+            statement.execute( String.format( constraint, "pdb", "pro_fk4", "data_config_hash", "data_configs", "data_config_hash" ) );
+            statement.execute( String.format( constraint, "pdb", "pro_fk5", "store_config_hash", "store_configs", "store_config_hash" ) );
+            statement.execute( String.format( constraint, "pdb", "pro_fk6", "part_config_hash", "part_configs", "part_config_hash" ) );
 
 
         } catch (SQLException e) {
@@ -419,9 +399,8 @@ public class QueryLogAdapter {
         """;
         try {
             statement.execute( polySql.formatted( SCHEMA_NAME, "results" ) );
-            statement.execute( polySql.formatted( SCHEMA_NAME, "orders" ) );
-            statement.execute( polySql.formatted( SCHEMA_NAME, "profiles" ) );
-            statement.execute( polySql.formatted( SCHEMA_NAME, "nodes" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "pdb" ) );
+            statement.execute( polySql.formatted( SCHEMA_NAME, "pctrl" ) );
             statement.execute( polySql.formatted( SCHEMA_NAME, "query_config" ) );
             statement.execute( polySql.formatted( SCHEMA_NAME, "data_configs" ) );
             statement.execute( polySql.formatted( SCHEMA_NAME, "errors" ) );

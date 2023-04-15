@@ -14,20 +14,15 @@
  * limitations under the License.
  */
 
-package server.config;
+package server.profile;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.io.Serializable;
-import java.util.Map;
-
 @Getter
 @AllArgsConstructor
-public class StartConfig extends Config implements Serializable {
+public class LogicalPlanConfig extends Config {
 
-    Map<String, String> parameters;
-
-    //...
+    private final String logicalPlan;
 
 }

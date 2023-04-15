@@ -14,24 +14,16 @@
  * limitations under the License.
  */
 
-package server.generators;
+package server.profile;
 
-import lombok.Setter;
-import server.config.SeedsConfig;
-import server.config.*;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 @Getter
 @Builder
 public class Profile implements Serializable {
-    /**
-     * Binds the PolyphenyDB instance to its creating PolyphenyControl instance.
-     */
-    private final String apiKey;
     /**
      * Describes the schema that is either generated or preset on this PolyphenyDB Instance.
      */
@@ -63,19 +55,8 @@ public class Profile implements Serializable {
     private final PartitionConfig partitionConfig;
 
     /**
-     * When the Profile was created.
-     */
-    private final Timestamp createdAt;
-
-    /**
-     * When the Profile was concluded.
-     */
-    private final Timestamp completedAt;
-
-    /**
      * Lists what seeds are issued to the PolyphenyDB for generating queries.
      */
     private final SeedsConfig issuedSeeds;
-
 
 }

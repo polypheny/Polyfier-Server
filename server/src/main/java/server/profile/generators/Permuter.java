@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package server.generators;
+package server.profile.generators;
 
 import java.util.Map;
 import java.util.Optional;

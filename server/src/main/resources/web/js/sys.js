@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-const log = document.getElementById('log-area');
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const socketUrl = "ws://" + window.location.host + "/ws";
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
             sendMessage(
                 JSON.stringify({
                     clientCode:"BROWSER",
-                    messageCode:"BROWSER_LOG",
+                    messageCode:"BROWSER_SYS",
                 })
             )
         }, 5000 );
@@ -40,10 +41,9 @@ document.addEventListener("DOMContentLoaded", function() {
         var content = JSON.parse(event.data);
         if (content.log) {
             console.log("Log message:", content.log);
-            log.textContent += content.log
-            log.scrollTop = log.scrollHeight
         } else if (content.sys) {
             console.log("System message:", content.sys);
+            // Todo display info -> D3
         } else {
             console.log("Unknown content:", content);
         }

@@ -14,25 +14,20 @@
  * limitations under the License.
  */
 
-package server.requests;
+package server.profile;
 
 import lombok.AllArgsConstructor;
-import server.profile.StartConfig;
+import lombok.Getter;
 
-import java.util.HashMap;
+import java.io.Serializable;
+import java.util.Map;
 
+@Getter
 @AllArgsConstructor
-public class PolyphenyControlResponse {
+public class StartConfig extends Config implements Serializable {
 
-    public static class StartConfiguration extends PolyphenyControlResponse {
-        String orderKey;
-        HashMap<String, String> parameters;
+    Map<String, String> parameters;
 
-        public StartConfiguration( StartConfig startConfig, String orderKey ) {
-            this.parameters = (HashMap<String, String>) startConfig.getParameters();
-            this.orderKey = orderKey;
-        }
-
-    }
+    //...
 
 }

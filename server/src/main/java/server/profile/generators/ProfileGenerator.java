@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package server.generators;
+package server.profile.generators;
 
 import connect.ConfigType;
-import server.config.SeedsConfig;
+import server.profile.SeedsConfig;
 import lombok.Builder;
-import server.config.*;
+import server.profile.*;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.*;
 import java.util.Map;
 
@@ -167,18 +166,15 @@ public class ProfileGenerator implements Serializable {
         return this.schemaConfig;
     }
 
-    public Profile createProfile( String apiKey, SeedsConfig seedsConfig ) {
+    synchronized public Profile createProfile( SeedsConfig seedsConfig ) {
         counter++;
         return Profile.builder()
-                .apiKey(apiKey)
                 .schemaConfig(createSchemaConfig())
                 .startConfig(createStartConfig())
                 .queryConfig(createQueryConfig())
                 .dataConfig(createDataConfig())
                 .storeConfig(createStoreConfig())
                 .partitionConfig(createPartitionConfig())
-                .createdAt(new Timestamp(System.currentTimeMillis()))
-                .completedAt(null)
                 .issuedSeeds(seedsConfig)
                 .build();
     }

@@ -14,13 +14,17 @@
  * limitations under the License.
  */
 
-package server.config;
+package server.profile;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ErrorConfig extends Config {
-    private final String error;
+public class PhysicalPlanConfig extends Config {
+
+    private final String physicalPlan;
+
 }
+

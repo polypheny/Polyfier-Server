@@ -51,7 +51,6 @@ public class ServerConfig implements Serializable {
     }
 
     public void setCredentials(String user, String password ) {
-        // Todo Encrypt / Decrypt...
         this.user = user;
         this.password = password;
         this.save();

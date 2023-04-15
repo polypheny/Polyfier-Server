@@ -14,20 +14,28 @@
  * limitations under the License.
  */
 
-package server.config;
+package server.clients;
 
+import io.javalin.websocket.WsContext;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Map;
 
 @Getter
+@Setter
 @AllArgsConstructor
-public class StoreConfig extends Config implements Serializable {
+public class PCtrl implements Serializable {
+    private transient WsContext wsContext;
+    private String pctrlKey;
+    private String sessionId;
+    private String apiKey;
+    private String branch;
+    private String status;
 
-    Map<String, String> parameters;
+    private boolean active;
 
-    Map<String, String> stores;
-
+    private long registeredAt;
+    private long updateTime;
 }

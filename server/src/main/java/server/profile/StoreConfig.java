@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package server.config;
+package server.profile;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.io.Serializable;
+import java.util.Map;
 
 @Getter
 @AllArgsConstructor
-public class SchemaConfig extends Config implements Serializable {
-
-    String schemaType;
-
+public class StoreConfig extends Config implements Serializable {
+    Map<String, String> parameters;
+    Map<String, String> stores;
 }
