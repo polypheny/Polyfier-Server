@@ -5,54 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b24353-915d-4dcf-89f4-70ad1157ffa4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/logging/WebSocketAppender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/clients/Browser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/clients/PCtrl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/clients/PDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/messages/ClientMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/messages/ServerMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/css/sys.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/doc/api-documentation.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/html/sys.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/package/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/package/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/package/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/package/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/sys.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/test/java/TestClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/PolyfierServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/PolyfierServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/connect/PolySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/PolySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/logging/QueueAppender.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/DataConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/DataConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/ErrorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/ErrorConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/LogicalPlanConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/LogicalPlanConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/PartitionConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/PartitionConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/PhysicalPlanConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/PhysicalPlanConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/QueryConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/QueryConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/SchemaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/SchemaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/SeedsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/SeedsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/StartConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/StartConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/config/StoreConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/StoreConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/BooleanPermuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/generators/BooleanPermuter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/Permuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/generators/Permuter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/generators/ProfileGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/generators/ProfileGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyControlResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyControlResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/PolyphenyDbResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/requests/Requests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/requests/Requests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/web/html/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/web/html/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/web/html/log.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/web/html/log.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/web/js/log.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/web/js/log.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/TestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/TestClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,31 +79,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "/Users/mandelbrot/repos/polyfier-server/server/src/main/java/server/clientcodetmp/pdb/profile",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mandelbrot/repos/polyfier-server/server/src/main/java/server/clientcodetmp/pdb/profile&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Console Font&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "hsqldb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;hsqldb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.jetbrains" />
@@ -392,7 +347,8 @@
       <workItem from="1680968000200" duration="6665000" />
       <workItem from="1680975285342" duration="1725000" />
       <workItem from="1681402834312" duration="12562000" />
-      <workItem from="1681556285140" duration="22408000" />
+      <workItem from="1681556285140" duration="23567000" />
+      <workItem from="1681589899812" duration="494000" />
     </task>
     <servers />
   </component>

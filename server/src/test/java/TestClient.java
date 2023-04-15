@@ -15,6 +15,7 @@
  */
 
 import com.google.gson.Gson;
+import jakarta.websocket.*;
 import javafx.util.Pair;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import server.profile.Profile;
 
-import javax.websocket.*;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URI;
