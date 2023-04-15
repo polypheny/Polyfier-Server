@@ -147,7 +147,7 @@ public class ProfileGenerator implements Serializable {
 
     public QueryConfig createQueryConfig() {
         // Todo handle weights and complexity
-        return new QueryConfig( parameterRoutine( queryConfigPermuter ), null, 0 );
+        return new QueryConfig( parameterRoutine( queryConfigPermuter ), null, 4 );
     }
 
     public StoreConfig createStoreConfig() {

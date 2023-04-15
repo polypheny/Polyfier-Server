@@ -18,10 +18,7 @@ package connect;
 
 import lombok.AllArgsConstructor;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 
 @AllArgsConstructor
 public enum PolySQL {
@@ -371,14 +368,14 @@ public enum PolySQL {
                 PreparedStatement preparedStatement = connection.prepareStatement( polySQL.get() );
                 preparedStatement.setString( 1, (String) args[0]);
                 preparedStatement.setString( 2, (String) args[1]);
-                preparedStatement.setLong( 3, (Long) args[2]);
+                preparedStatement.setObject( 3, args[2], Types.BIGINT);
                 preparedStatement.setBoolean( 4, (Boolean) args[3] );
                 preparedStatement.setTimestamp( 5, (Timestamp) args[4]);
-                preparedStatement.setLong( 6, (Long) args[5]);
-                preparedStatement.setLong( 7, (Long) args[6]);
-                preparedStatement.setLong( 8, (Long) args[7]);
-                preparedStatement.setLong( 9, (Long) args[8]);
-                preparedStatement.setLong( 10, (Long) args[9]);
+                preparedStatement.setObject( 6, args[5], Types.BIGINT);
+                preparedStatement.setObject( 7, args[6], Types.BIGINT);
+                preparedStatement.setObject( 8, args[7], Types.BIGINT);
+                preparedStatement.setObject( 9, args[8], Types.BIGINT);
+                preparedStatement.setLong( 10, (Long) args[9] );
                 statement = preparedStatement;
             }
 //            case COMPOSITE_JOB2 -> {

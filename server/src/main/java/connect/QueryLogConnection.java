@@ -387,23 +387,36 @@ public class QueryLogConnection {
     }
 
     public void insertResult( PDB pdb, ClientMessage.PDBResult pdbResult ) throws SQLException {
-        ErrorConfig errorConfig = new ErrorConfig( pdbResult.getError() );
-        PhysicalPlanConfig physicalPlanConfig = new PhysicalPlanConfig( pdbResult.getPhysical() );
-        LogicalPlanConfig logicalPlanConfig = new LogicalPlanConfig( pdbResult.getLogical() );
 
-        Pair<Long, String> errorPair = errorConfig.hashAndString();
-        if ( configDoesNotExists(ConfigType.ERROR, errorPair.getLeft()) ) {
-            insertConfig( ConfigType.ERROR, errorPair.getLeft(), errorPair.getRight() );
+        Long errorHash = null;
+        if ( pdbResult.getError() != null ) {
+            ErrorConfig errorConfig = new ErrorConfig( pdbResult.getError() );
+            Pair<Long, String> errorPair = errorConfig.hashAndString();
+            if ( configDoesNotExists(ConfigType.ERROR, errorPair.getLeft()) ) {
+                insertConfig( ConfigType.ERROR, errorPair.getLeft(), errorPair.getRight() );
+            }
+            errorHash = errorPair.getLeft();
         }
 
-        Pair<Long, String> physicalPlanPair = physicalPlanConfig.hashAndString();
-        if ( configDoesNotExists(ConfigType.PHYSICAL_PLAN, physicalPlanPair.getLeft()) ) {
-            insertConfig( ConfigType.PHYSICAL_PLAN, physicalPlanPair.getLeft(), physicalPlanPair.getRight() );
+
+        Long physicalPlanHash = null;
+        if ( pdbResult.getPhysical() != null ) {
+            PhysicalPlanConfig physicalPlanConfig = new PhysicalPlanConfig( pdbResult.getPhysical() );
+            Pair<Long, String> physicalPlanPair = physicalPlanConfig.hashAndString();
+            if ( configDoesNotExists(ConfigType.PHYSICAL_PLAN, physicalPlanPair.getLeft()) ) {
+                insertConfig( ConfigType.PHYSICAL_PLAN, physicalPlanPair.getLeft(), physicalPlanPair.getRight() );
+            }
+            physicalPlanHash = physicalPlanPair.getLeft();
         }
 
-        Pair<Long, String> logicalPlanPair = logicalPlanConfig.hashAndString();
-        if ( configDoesNotExists(ConfigType.LOGICAL_PLAN, logicalPlanPair.getLeft()) ) {
-            insertConfig( ConfigType.LOGICAL_PLAN, logicalPlanPair.getLeft(), logicalPlanPair.getRight() );
+        Long logicalPlanHash = null;
+        if ( pdbResult.getLogical() != null ) {
+            LogicalPlanConfig logicalPlanConfig = new LogicalPlanConfig( pdbResult.getLogical() );
+            Pair<Long, String> logicalPlanPair = logicalPlanConfig.hashAndString();
+            if ( configDoesNotExists(ConfigType.LOGICAL_PLAN, logicalPlanPair.getLeft()) ) {
+                insertConfig( ConfigType.LOGICAL_PLAN, logicalPlanPair.getLeft(), logicalPlanPair.getRight() );
+            }
+            logicalPlanHash = logicalPlanPair.getLeft();
         }
 
         try (
@@ -415,10 +428,10 @@ public class QueryLogConnection {
                         pdbResult.getSeed(),
                         pdbResult.getSuccess(),
                         new Timestamp( pdb.getUpdateTime() ),
-                        errorPair.getLeft(),
+                        errorHash,
                         pdbResult.getResultSetHash(),
-                        logicalPlanPair.getLeft(),
-                        physicalPlanPair.getLeft(),
+                        logicalPlanHash,
+                        physicalPlanHash,
                         pdbResult.getActual()
                 )
 

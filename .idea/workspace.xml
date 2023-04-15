@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="18b24353-915d-4dcf-89f4-70ad1157ffa4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/TestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/TestClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connect/PolySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/PolySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connect/QueryLogConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/profile/StoreConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/StoreConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/profile/generators/ProfileGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/profile/generators/ProfileGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,7 +350,7 @@
       <workItem from="1680975285342" duration="1725000" />
       <workItem from="1681402834312" duration="12562000" />
       <workItem from="1681556285140" duration="23567000" />
-      <workItem from="1681589899812" duration="494000" />
+      <workItem from="1681589899812" duration="3264000" />
     </task>
     <servers />
   </component>

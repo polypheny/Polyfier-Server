@@ -25,6 +25,6 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public class StoreConfig extends Config implements Serializable {
-    Map<String, String> parameters;
     Map<String, String> stores;
+    Map<String, String> parameters;
 }
